@@ -25,7 +25,7 @@ public class AppTest {
 
 	@BeforeClass
 	public static void init() {
-		
+		// building the api path
 		RestAssured.baseURI = "https://splunk.mocklab.io";
 		
 		builder = new RequestSpecBuilder();
@@ -36,11 +36,15 @@ public class AppTest {
 		
 	}
 
+// TestCase: No two movies should have the same image 	
+// using the Rest Assured Library extract the value poster_path from Api
+//response, once we have response we spilt it and store in array. Later we test using method assertnotsame() that two are not same image names.
+	//Our test returns passed if two Collections are not same 
 	@Test
-	public void test001() {
+	public void SP001() {
 		final String SEPARATOR = ",";
-		List<String> poster_path1; 
-		poster_path1= given()
+		List<String> poster_path_image; 
+		poster_path_image= given()
 		.spec(requestSpec)
 		.when()
 		.get("/movies")
@@ -51,7 +55,7 @@ public class AppTest {
 		
 		//convert the list to string 
 		StringBuilder poster = new StringBuilder();
-		  for(String str : poster_path1){
+		  for(String str : poster_path_image){
 		    poster.append(str);
 		    poster.append(SEPARATOR);
 		  }
@@ -78,7 +82,4 @@ public class AppTest {
 			
 		  assertNotSame(st1, Arrays.toString(arr));
 	}
-	
-	
-	
 }	
