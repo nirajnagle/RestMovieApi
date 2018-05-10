@@ -6,8 +6,6 @@ import static org.testng.Assert.assertNotSame;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,7 +13,6 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 import org.testng.asserts.SoftAssert;
 
-import org.hamcrest.FeatureMatcher;
 import org.hamcrest.Matcher;
 import org.hamcrest.core.AnyOf;
 import org.testng.annotations.BeforeClass;
@@ -93,32 +90,28 @@ public class AppTest {
 	}
 	
 	
-//	@Test
-//	public void SP002() throws Exception  {
-//		List<String> poster_path_image2;
-// 
-//		poster_path_image2= given()
-//		.spec(requestSpec)
-//		.when()
-//		.get("/movies")
-//		.then()
-//		.extract()
-//		.path("results.poster_path");
-//		
-//		String s= poster_path_image2.toString();
-//		//System.out.println(s);
-//	
-//				  try {
-//				assertThat(s, anyOf(startsWith("https://"),isEmptyOrNullString()));
-//				} catch (Exception e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//		
-//		
-//		
-//		
-//	}
+	@Test
+	public void SP002() throws Exception  {
+		List<String> poster_path_image2;
+ 
+		poster_path_image2= given()
+		.spec(requestSpec)
+		.when()
+		.get("/movies")
+		.then()
+		.extract()
+		.path("results.poster_path");
+		
+		String s= poster_path_image2.toString();
+		//System.out.println(s);
+	
+				  try {
+				assertThat(s, anyOf(startsWith("https://"),isEmptyOrNullString()));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		
+	}
 
 	
 	
