@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
+    <classes>
+      <class name="com.movie.rest.api.AppTest">
+        <methods>
+          <include name="SP001"/>
+          <include name="SP002"/>
+          <include name="init"/>
+        </methods>
+      </class> <!-- com.movie.rest.api.AppTest -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

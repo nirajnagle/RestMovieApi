@@ -6,12 +6,15 @@ import static org.testng.Assert.assertNotSame;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.assertThat;
+import org.testng.asserts.SoftAssert;
 
+import org.hamcrest.Matcher;
+import org.hamcrest.core.AnyOf;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -37,11 +40,11 @@ public class AppTest {
 	}
 
 // TestCase: No two movies should have the same image 	
-// using the Rest Assured Library extract the value poster_path from Api
-//response, once we have response we spilt it and store in array. Later we test using method assertnotsame() that two are not same image names.
+//from the reposnse split the the string that contains .jpg 
+//Loop through them and Add them to list and set. Then Compare two objects using assertequals()	
 	//Our test returns passed if two Collections are not same 
 	@Test
-	public void SP001() {
+	public void SP001() throws Exception{
 		final String SEPARATOR = ",";
 		List<String> poster_path_image; 
 		poster_path_image= given()
@@ -64,22 +67,51 @@ public class AppTest {
 		  
 		  String[]  poster_split=st.split("[/,]");
 		  
-		 String [] arr= {"cinema-food-movvvie-theater-33129.jpg,actor-actress-adult-974477.jpg?dl=0adult-beard-electronics-819848.jpg?dl=0,architecture-bluebird-theatre-building-208647.jpg?dl=0,black-and-white-caixa-belas-artes-cinema-65437.jpg,candy-delicious-eating-2904.jpg?dl=0,cinema-food-movie-theater-33129.jpg?dl=0,cinema-food-movie-theater-33129.jpg?dl=0,sWa1Y5QhGuJMjw8uuFoggGLqZ0y.jpg,cinema-food-movvvie-theater-33129.jpg?dl=0"};
-
-		 
-		  List<String> st1= new ArrayList<String>();
-		  		st1.add(poster_split[5]);
-		  		st1.add(poster_split[11]);				
-		  		st1.add(poster_split[17]);				
-		  		st1.add(poster_split[23]);				
-		  		st1.add(poster_split[29]);				
-		  		st1.add(poster_split[35]);				
-		  		st1.add(poster_split[41]);				
-		  		st1.add(poster_split[47]);				
-		  		st1.add(poster_split[53]);				
-		  		st1.add(poster_split[55]);
-		  		st1.add(poster_split[62]);			
+		  System.out.println(Arrays.toString(poster_split));
+		 // System.out.println(poster_split[2]);
+		  List <String> list=new ArrayList<String>();
+		  Set <String> set =new LinkedHashSet<String>();
+		  
+		  for (int i = 0; i < poster_split.length; i++) {			 
+			  if (poster_split[i].contains("jpg"))
+				  list.add(poster_split[i]);
+		  }
+		  for (int j = 0; j < poster_split.length; j++) {
+			  if (poster_split[j].contains("jpg"))
+				  set.add(poster_split[j]);
 			
-		  assertNotSame(st1, Arrays.toString(arr));
+		}
+		//System.out.println(poster_split[i]);
+		 // System.out.println(list);
+		  //System.out.println("===============");
+		 // System.out.println(set);
+		assertEquals(list, set);    			
+		  
 	}
+	
+	
+	@Test
+	public void SP002() throws Exception  {
+		List<String> poster_path_image2;
+ 
+		poster_path_image2= given()
+		.spec(requestSpec)
+		.when()
+		.get("/movies")
+		.then()
+		.extract()
+		.path("results.poster_path");
+		
+		String s= poster_path_image2.toString();
+		//System.out.println(s);
+	
+				  try {
+				assertThat(s, anyOf(startsWith("https://"),isEmptyOrNullString()));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		
+	}
+
+		
 }	
