@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="2" total="2" passed="0">
+<testng-results skipped="0" failed="2" total="6" passed="4">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="1630" started-at="2018-05-10T04:39:20Z" finished-at="2018-05-10T04:39:21Z">
+  <suite name="Default suite" duration-ms="2079" started-at="2018-05-14T06:50:44Z" finished-at="2018-05-14T06:50:47Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="1630" started-at="2018-05-10T04:39:20Z" finished-at="2018-05-10T04:39:21Z">
+    <test name="Default test" duration-ms="2079" started-at="2018-05-14T06:50:44Z" finished-at="2018-05-14T06:50:47Z">
       <class name="com.movie.rest.api.AppTest">
-        <test-method status="PASS" signature="init()[pri:0, instance:com.movie.rest.api.AppTest@100fc185]" name="init" is-config="true" duration-ms="369" started-at="2018-05-10T00:39:20Z" finished-at="2018-05-10T00:39:20Z">
+        <test-method status="PASS" signature="init()[pri:0, instance:com.movie.rest.api.AppTest@100fc185]" name="init" is-config="true" duration-ms="382" started-at="2018-05-14T02:50:44Z" finished-at="2018-05-14T02:50:45Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method status="FAIL" signature="SP001()[pri:0, instance:com.movie.rest.api.AppTest@100fc185]" name="SP001" duration-ms="1102" started-at="2018-05-10T00:39:20Z" finished-at="2018-05-10T00:39:21Z">
+        <test-method status="FAIL" signature="SP001()[pri:0, instance:com.movie.rest.api.AppTest@100fc185]" name="SP001" duration-ms="1037" started-at="2018-05-14T02:50:45Z" finished-at="2018-05-14T02:50:46Z">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[null: lists don't have the same size expected [10] but found [11]]]>
@@ -24,7 +24,7 @@
 	at org.testng.Assert.assertEquals(Assert.java:370)
 	at org.testng.Assert.assertEquals(Assert.java:537)
 	at org.testng.Assert.assertEquals(Assert.java:514)
-	at com.movie.rest.api.AppTest.SP001(AppTest.java:91)
+	at com.movie.rest.api.AppTest.SP001(AppTest.java:95)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -55,7 +55,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- SP001 -->
-        <test-method status="FAIL" signature="SP002()[pri:0, instance:com.movie.rest.api.AppTest@100fc185]" name="SP002" duration-ms="146" started-at="2018-05-10T00:39:21Z" finished-at="2018-05-10T00:39:21Z">
+        <test-method status="FAIL" signature="SP002()[pri:0, instance:com.movie.rest.api.AppTest@100fc185]" name="SP002" duration-ms="111" started-at="2018-05-14T02:50:46Z" finished-at="2018-05-14T02:50:46Z">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[
@@ -69,7 +69,7 @@ Expected: (a string starting with "https://" or (null or an empty string))
 	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)
 	at org.junit.Assert.assertThat(Assert.java:956)
 	at org.junit.Assert.assertThat(Assert.java:923)
-	at com.movie.rest.api.AppTest.SP002(AppTest.java:112)
+	at com.movie.rest.api.AppTest.SP002(AppTest.java:116)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -100,6 +100,22 @@ Expected: (a string starting with "https://" or (null or an empty string))
           <reporter-output>
           </reporter-output>
         </test-method> <!-- SP002 -->
+        <test-method status="PASS" signature="SP003()[pri:0, instance:com.movie.rest.api.AppTest@100fc185]" name="SP003" duration-ms="234" started-at="2018-05-14T02:50:46Z" finished-at="2018-05-14T02:50:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SP003 -->
+        <test-method status="PASS" signature="SPL004()[pri:0, instance:com.movie.rest.api.AppTest@100fc185]" name="SPL004" duration-ms="92" started-at="2018-05-14T02:50:46Z" finished-at="2018-05-14T02:50:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SPL004 -->
+        <test-method status="PASS" signature="SPL005()[pri:0, instance:com.movie.rest.api.AppTest@100fc185]" name="SPL005" duration-ms="87" started-at="2018-05-14T02:50:46Z" finished-at="2018-05-14T02:50:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SPL005 -->
+        <test-method status="PASS" signature="SPL006()[pri:0, instance:com.movie.rest.api.AppTest@100fc185]" name="SPL006" duration-ms="121" started-at="2018-05-14T02:50:46Z" finished-at="2018-05-14T02:50:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SPL006 -->
       </class> <!-- com.movie.rest.api.AppTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
