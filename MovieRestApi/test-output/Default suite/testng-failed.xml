@@ -5,6 +5,7 @@
     <classes>
       <class name="com.movie.rest.api.AppTest">
         <methods>
+          <include name="SPL004"/>
           <include name="SP001"/>
           <include name="SP002"/>
           <include name="init"/>

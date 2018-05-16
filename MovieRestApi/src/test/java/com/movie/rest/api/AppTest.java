@@ -3,17 +3,22 @@ package com.movie.rest.api;
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import com.google.common.primitives.Ints;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -64,7 +69,7 @@ public class AppTest {
 		  
 		  String[]  poster_split=st.split("[/,]");
 		  
-		  System.out.println(Arrays.toString(poster_split));
+		  //System.out.println(Arrays.toString(poster_split));
 		 // System.out.println(poster_split[2]);
 		  List <String> list=new ArrayList<String>();
 		  Set <String> set =new LinkedHashSet<String>();
@@ -145,7 +150,6 @@ public class AppTest {
 		//Loop through each element and check if it is null
 		//if null check first response i.e genre_id is null
 		for ( int i = 0; i <= st.length-1; i++) {
-				//System.out.println(st[i]);
 			if (st[i]==null) {
 				assertThat(st[0], nullValue());
 				assertThat(s1, lessThan(s2));	
@@ -155,7 +159,7 @@ public class AppTest {
 		
 		@Test
 		public void SPL004() throws Exception{
-			List<Integer> genre_id= new ArrayList<Integer>();
+			ArrayList<ArrayList<Integer>> genre_id=new ArrayList<ArrayList<Integer>>();
 					
 			genre_id=given()
 				.spec(requestSpec)
@@ -163,24 +167,28 @@ public class AppTest {
 				.get("/movies")
 				.then()
 				.extract()
-				.path("results.genre_ids[0]");
-			System.out.println(genre_id);
+				.path("results.genre_ids");
+		//	System.out.println(genre_id);
 			
-//			String st= genre_id.toString();
-//			String [] str= st.split("");
-//			System.out.println(str);
-			
-			
-			int sum=0;
-			int count=0;
-			for (int i = 0; i < genre_id.size(); i++){		
-				 sum= sum + genre_id.get(i);	
+	         	int sum=0;
+	         	int count=0;
+	         	for (int i = 0; i < genre_id.size(); i++){
+	         		
+	         		sum=0;
+	         		for(int j=0;j<genre_id.get(i).size();j++) {
+	         			sum=sum+genre_id.get(i).get(j);
+	         				         			
+	         		}
+	         		if (sum>400) {
+	   				 count=count+1;
+	   			 }	
 			}
-			if (sum>400) {
-				 count=count+1;
-			 }						
-			System.out.println(count);		
-		}
+    			//System.out.println(count);
+    						
+    			assertEquals(7, count);
+
+								
+	}
 		
 		@Test
 		public void SPL005() throws Exception{
@@ -250,7 +258,7 @@ public class AppTest {
 				
 			}	
 			assertEquals(2, count);
-			System.out.println("The Count is" + count );
+			//System.out.println("The Count is" + count );
 		
 		}	
 
