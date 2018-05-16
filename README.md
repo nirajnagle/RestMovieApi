@@ -6,4 +6,3 @@ Libriaries used in Project are TestNg, Rest Assured and Hamcrest matcher(groovy 
 The suite covers all the Test cases as per bussiness requirement.
 After you run the test report is generated using TestNg.
 
-Out of 6 two test cases pass 
